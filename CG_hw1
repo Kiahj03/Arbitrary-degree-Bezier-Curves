@@ -1,0 +1,17 @@
+#!/bin/bash
+
+filename="filename"
+n="n"
+radius="radius"
+
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        -f|--filename) filename="$2"; shift ;;
+        -n|--n) n="$2"; shift ;;
+        -r|--radius) radius="$2"; shift ;;
+        *) echo "Parameter not permitted: $1"; exit 1 ;;
+    esac
+    shift
+done
+
+python3 bezier_curve.py -f "$filename" -n "$n" -r "$radius"
